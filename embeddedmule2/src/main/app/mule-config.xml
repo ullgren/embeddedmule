@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" version="CE-3.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/servlet http://www.mulesoft.org/schema/mule/servlet/current/mule-servlet.xsd 
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd ">
+    <flow name="ServletFlow" doc:name="ServletFlow">
+        <servlet:inbound-endpoint path="echo" responseTimeout="10000" doc:name="Servlet"/>
+        <logger level="INFO" doc:name="Logger"/>
+        <scripting:component doc:name="Script">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[return "You requested " + message.payload;]]></scripting:text>
+            </scripting:script>
+        </scripting:component>
+    </flow>
+</mule>

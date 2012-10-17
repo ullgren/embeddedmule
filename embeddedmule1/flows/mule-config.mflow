@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="embeddedmule3">
+    <flow SubFlow="false" name="Filetransfer" entity-id="37beffeb-453a-48a7-b9e5-eab6473366d7">
+        <properties>
+            <property value="" name="processingStrategy2"/>
+            <property value="true" name="auxiliary;erased;processingStrategy2"/>
+            <property value="1" name="auxiliary;index"/>
+            <property name="updated"/>
+        </properties>
+        <description></description>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/file/endpoint" name="File" entity-id="7e6ff047-f8ab-4815-9f7d-be4cf78be80a">
+                <properties>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="false" name="reverseOrder"/>
+                    <property value="" name="moveToPattern"/>
+                    <property value="1000" name="pollingFrequency"/>
+                    <property value="" name="comparator"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="moveToDirectory"/>
+                    <property value="" name="address"/>
+                    <property value="500" name="fileAge"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="/tmp/in" name="path"/>
+                    <property value="" name="encoding"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="" name="mimeType"/>
+                    <property value="" name="connector-ref"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="f15e27e4-c456-4664-8a88-d53cdb857c1f"/>
+            <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/file/endpoint" name="File" entity-id="883e94a8-3274-4546-8137-d35107738677">
+                <properties>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="address"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="/tmp/out" name="path"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="outputPattern"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="" name="mimeType"/>
+                    <property value="" name="connector-ref"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </endpoint>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

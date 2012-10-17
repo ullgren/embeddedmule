@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<description>Simple webapp that has a embedded mule</description>
+
+	<context-param>
+		<param-name>org.mule.config</param-name>
+		<param-value>mule-config.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.mule.config.builders.MuleXmlBuilderContextListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>muleServlet</servlet-name>
+		<servlet-class>org.mule.transport.servlet.MuleReceiverServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>muleServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="embeddedmule3">
+    <flow SubFlow="false" name="ServletFlow" entity-id="d9d84a91-06d6-4eae-a37b-2eb0f38d20d6">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property value="1" name="auxiliary;index"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/servlet/endpoint" name="Servlet" entity-id="Servlet#1">
+                <properties>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="echo" name="path"/>
+                    <property value="2" name="auxiliary;index"/>
+                    <property value="2" name="auxiliary;index"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property value="2" name="auxiliary;index"/>
+                    <property name="address"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property value="2" name="auxiliary;index"/>
+                    <property value="2" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property value="2" name="auxiliary;index"/>
+                    <property value="2" name="auxiliary;index"/>
+                    <property value="2" name="auxiliary;index"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#1">
+                <properties>
+                    <property name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="3" name="auxiliary;index"/>
+                    <property value="3" name="auxiliary;index"/>
+                    <property value="3" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" name="Script" entity-id="Groovy#1">
+                <properties>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="return &quot;You said &quot; + message.payload;" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="5" name="auxiliary;wrapIn"/>
+                        <property value="5" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="return &quot;You said &quot; + message.payload;" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="5" name="auxiliary;wrapIn"/>
+                        <property value="5" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>
