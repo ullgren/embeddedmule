@@ -1,185 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.ullgren.pontus.example</groupId>
-	<artifactId>embeddedmule2</artifactId>
-	<packaging>war</packaging>
-	<version>1.0.0-SNAPSHOT</version>
-	<name>Simple webapp that has a embedded mule that uses the servlet transport</name>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<mule.version>3.3.0</mule.version>
-		<eclipsePluginVersion>2.8</eclipsePluginVersion>
-		<junit.version>4.9</junit.version>
-	</properties>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>src/main/app</directory>
-			</resource>
-		</resources>
-	</build>
-	<!-- Mule Dependencies -->
-	<dependencies>
-		<dependency>
-			<groupId>org.mule</groupId>
-			<artifactId>mule-core</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<!-- Xml configuration -->
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-spring-config</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>com.mulesoft.muleesb</groupId> -->
-		<!-- <artifactId>mule-core-ee</artifactId> -->
-		<!-- <version>${mule.version}</version> -->
-		<!-- <scope>provided</scope> -->
-		<!-- </dependency> -->
-		<!-- Xml configuration -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.mulesoft.muleesb.modules</groupId> -->
-		<!-- <artifactId>mule-module-spring-config-ee</artifactId> -->
-		<!-- <version>${mule.version}</version> -->
-		<!-- <scope>provided</scope> -->
-		<!-- </dependency> -->
-
-		<!-- Mule Transports -->
-		<dependency>
-			<groupId>org.mule.transports</groupId>
-			<artifactId>mule-transport-file</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>org.mule.transports</groupId>
-			<artifactId>mule-transport-http</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>org.mule.transports</groupId>
-			<artifactId>mule-transport-servlet</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.mule.transports</groupId> -->
-		<!-- <artifactId>mule-transport-jdbc</artifactId> -->
-		<!-- <version>${mule.version}</version> -->
-		<!-- <scope>provided</scope> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.mule.transports</groupId> -->
-		<!-- <artifactId>mule-transport-jms</artifactId> -->
-		<!-- <version>${mule.version}</version> -->
-		<!-- <scope>provided</scope> -->
-		<!-- </dependency> -->
-		<dependency>
-			<groupId>org.mule.transports</groupId>
-			<artifactId>mule-transport-vm</artifactId>
-			<version>${mule.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Mule Modules -->
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-client</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.mule.modules</groupId>-->
-<!--			<artifactId>mule-module-cxf</artifactId>-->
-<!--			<version>${mule.version}</version>-->
-<!--			 <scope>provided</scope> -->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-management</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-scripting</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-sxc</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-module-xml</artifactId>
-			<version>${mule.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
-
-		<!-- for testing -->
-		<dependency>
-			<groupId>org.mule.tests</groupId>
-			<artifactId>mule-tests-functional</artifactId>
-			<version>${mule.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>mockobjects</groupId>
-			<artifactId>mockobjects-core</artifactId>
-			<version>0.09</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<repositories>
-		<!-- <repository> -->
-		<!-- <id>jboss</id> -->
-		<!-- <name>JBoss</name> -->
-		<!-- <url>http://repository.jboss.com/</url> -->
-		<!-- </repository> -->
-		<!-- <repository> -->
-		<!-- <id>mulesoft-releases</id> -->
-		<!-- <name>MuleSoft Releases</name> -->
-		<!-- <url>http://repository.mulesoft.org/releases/</url> -->
-		<!-- </repository> -->
-		<!-- <repository> -->
-		<!-- <id>oss-sonatype-snapshots</id> -->
-		<!-- <url>https://oss.sonatype.org/content/repositories/snapshots/</url> -->
-		<!-- </repository> -->
-		<!-- <repository> -->
-		<!-- <id>codehaus-snaphosts</id> -->
-		<!-- <name>Codehaus Snapshots</name> -->
-		<!-- <url>http://snapshots.repository.codehaus.org/</url> -->
-		<!-- </repository> -->
-		<repository>
-			<id>codehaus-releases</id>
-			<name>CodeHaus Releases</name>
-			<url>http://repository.codehaus.org/</url>
-		</repository>
-	</repositories>
-
-
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ullgren.pontus.example</groupId>
+  <artifactId>embeddedmule2</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>Simple webapp that has a embedded mule that uses the servlet transport</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <mule.version>3.8.0</mule.version>
+    <eclipsePluginVersion>2.8</eclipsePluginVersion>
+    <junit.version>4.9</junit.version>
+  </properties>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>src/main/app</directory>
+      </resource>
+    </resources>
+  </build>
+  <!-- Mule Dependencies -->
+  <dependencies>
+    <dependency>
+      <groupId>org.mule</groupId>
+      <artifactId>mule-core</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <!-- Xml configuration -->
+    <dependency>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-module-spring-config</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <!-- <dependency> -->
+    <!-- <groupId>com.mulesoft.muleesb</groupId> -->
+    <!-- <artifactId>mule-core-ee</artifactId> -->
+    <!-- <version>${mule.version}</version> -->
+    <!-- <scope>provided</scope> -->
+    <!-- </dependency> -->
+    <!-- Xml configuration -->
+    <!-- <dependency> -->
+    <!-- <groupId>com.mulesoft.muleesb.modules</groupId> -->
+    <!-- <artifactId>mule-module-spring-config-ee</artifactId> -->
+    <!-- <version>${mule.version}</version> -->
+    <!-- <scope>provided</scope> -->
+    <!-- </dependency> -->
+    <!-- Mule Transports -->
+    <dependency>
+      <groupId>org.mule.transports</groupId>
+      <artifactId>mule-transport-file</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <dependency>
+      <groupId>org.mule.transports</groupId>
+      <artifactId>mule-transport-http</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <dependency>
+      <groupId>org.mule.transports</groupId>
+      <artifactId>mule-transport-servlet</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <!-- <dependency> -->
+    <!-- <groupId>org.mule.transports</groupId> -->
+    <!-- <artifactId>mule-transport-jdbc</artifactId> -->
+    <!-- <version>${mule.version}</version> -->
+    <!-- <scope>provided</scope> -->
+    <!-- </dependency> -->
+    <!-- <dependency> -->
+    <!-- <groupId>org.mule.transports</groupId> -->
+    <!-- <artifactId>mule-transport-jms</artifactId> -->
+    <!-- <version>${mule.version}</version> -->
+    <!-- <scope>provided</scope> -->
+    <!-- </dependency> -->
+    <dependency>
+      <groupId>org.mule.transports</groupId>
+      <artifactId>mule-transport-vm</artifactId>
+      <version>${mule.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Mule Modules -->
+    <dependency>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-module-client</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <!--		<dependency>-->
+    <!--			<groupId>org.mule.modules</groupId>-->
+    <!--			<artifactId>mule-module-cxf</artifactId>-->
+    <!--			<version>${mule.version}</version>-->
+    <!--			 <scope>provided</scope> -->
+    <!--		</dependency>-->
+    <dependency>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-module-management</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <dependency>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-module-scripting</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <dependency>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-module-sxc</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <dependency>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-module-xml</artifactId>
+      <version>${mule.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+    <!-- for testing -->
+    <dependency>
+      <groupId>org.mule.tests</groupId>
+      <artifactId>mule-tests-functional</artifactId>
+      <version>${mule.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>mockobjects</groupId>
+      <artifactId>mockobjects-core</artifactId>
+      <version>0.09</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <repositories>
+    <!--  Since Mule ESB is not published at maven central we need this extra repo -->
+    <repository>
+      <id>mulesoft-releases</id>
+      <name>MuleSoft Repository</name>
+      <url>http://repository.mulesoft.org/releases/</url>
+      <layout>default</layout>
+    </repository>
+    <repository>
+      <id>Codehaus repository</id>
+      <name>codehaus-mule-repo</name>
+      <url>https://repository-master.mulesoft.org/nexus/content/groups/public/
+       </url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
 </project>
